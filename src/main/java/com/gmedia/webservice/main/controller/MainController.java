@@ -3,6 +3,7 @@ package com.gmedia.webservice.main.controller;
 import com.gmedia.webservice.main.dao.MainDao;
 import com.gmedia.webservice.main.entity.MainEntity;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,23 +20,17 @@ public class MainController {
     @Autowired
     private MainDao dao;
 
-    @RequestMapping("/add")
+    @GetMapping("/add")
     public MainEntity mainAdd(MainEntity entity){
         MainEntity ent = dao.save(entity);
 
         return ent;
     }
 
-    @RequestMapping("/list")
+    @GetMapping("/list")
     public List<MainEntity> mainList(){
         List<MainEntity> list = dao.findAll();
 
         return list;
-    }
-
-    @RequestMapping(value = "/main")
-    public String index(Model model){
-        model.addAttribute("name","betterfly's Home");
-        return "main";
     }
 }
