@@ -13,13 +13,23 @@ import javax.persistence.Id;
 public class MainEntity {
     @Id
     @GeneratedValue
-    String id;
+    Long id;
 
-    public String getId() {
+    String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 }

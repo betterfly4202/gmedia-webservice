@@ -1,7 +1,12 @@
 package com.gmedia.webservice.main.controller;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.gmedia.webservice.main.dao.MainDao;
+import com.gmedia.webservice.main.entity.MainEntity;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * Created by betterFLY on 2018. 4. 21.
@@ -11,8 +16,26 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class MainController {
 
+    @Autowired
+    private MainDao dao;
+
+    @RequestMapping("/add")
+    public MainEntity mainAdd(MainEntity entity){
+        MainEntity ent = dao.save(entity);
+
+        return ent;
+    }
+
+    @RequestMapping("/list")
+    public List<MainEntity> mainList(){
+        List<MainEntity> list = dao.findAll();
+
+        return list;
+    }
+
     @RequestMapping(value = "/main")
-    public String index(){
-        return "Hello World";
+    public String index(Model model){
+        model.addAttribute("name","betterfly's Home");
+        return "main";
     }
 }
