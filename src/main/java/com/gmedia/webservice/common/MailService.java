@@ -30,8 +30,7 @@ public class MailService {
 
     public boolean sendMail(String to, String subject, String content){
         MimeMessagePreparator preparator = new MimeMessagePreparator(){
-            public void prepare(MimeMessage mimeMessage) throws Exception
-            {
+            public void prepare(MimeMessage mimeMessage) throws Exception{
                 mimeMessage.setRecipient(Message.RecipientType.TO, new InternetAddress(to));
                 mimeMessage.setFrom(new InternetAddress("me"));
                 mimeMessage.setSubject(subject);
