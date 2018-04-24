@@ -1,5 +1,6 @@
 package com.gmedia.webservice.mail.controller;
 
+import com.gmedia.webservice.common.MailService;
 import com.gmedia.webservice.mail.dao.MainDao;
 import com.gmedia.webservice.mail.entity.MainEntity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,5 +41,15 @@ public class MailController {
         List<MainEntity> list = dao.findAll();
 
         return list;
+    }
+
+    @Autowired
+    MailService mailService;
+
+    @GetMapping("/send/mail")
+    public boolean sendMail(){
+        boolean isSend = mailService.sendMail("dlcnddlf88@naver.com","제목", "내용이 거다");
+
+        return isSend;
     }
 }
