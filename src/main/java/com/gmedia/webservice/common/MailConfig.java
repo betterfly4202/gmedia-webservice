@@ -35,6 +35,10 @@ public class MailConfig {
     @Value("${mail.smtp.pass}")
     String pass;
 
+    public String setHost(){
+        return this.host;
+    }
+
     @Bean
     public JavaMailSender getMailSender(){
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
