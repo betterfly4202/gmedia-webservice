@@ -2,20 +2,25 @@ package com.gmedia.webservice.common;
 
 import java.util.Properties;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
+import org.springframework.stereotype.Component;
+import sun.tools.java.Environment;
 
 /**
  * Created by betterFLY on 2018. 4. 25.
  * Github : http://github.com/betterfly88
  */
 
+@Component
 @Configuration
-@PropertySource(value="classpath:application.properties")
+@PropertySource(value="classpath:properties/connection.properties")
 public class MailConfig {
 
     @Value("${mail.smtp.host}")
