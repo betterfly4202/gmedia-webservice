@@ -155,7 +155,7 @@
                                 <input type="file">
                             </div>
 
-                            <textarea id="editor">
+                            <textarea name="editor" id="editor">
 
                             </textarea>
                         </div>
@@ -176,20 +176,27 @@
     <script src="/js/mail/mail.js"></script>
 
     <script>
-        CKEDITOR.replace('editor',{
-            width:640,
-            height: 480
-        });
 
-        function mailSend(){
-            var data = $('textarea.editor').val();
-
-//             console.log($("#mailReceiver").val());
-//             console.log($("#mailSubject").val());
-             console.log(data);
-        }
+        $(function(){
+            CKEDITOR.replace('editor',{
+                width:640,
+                height: 480
+            });
+        })
 
 
+//        function mailSend(){
+////            var data = $('textarea.editor').val();
+//
+//            if(CKEDITOR.instances.editor.getData().length < 1){
+//                alert("내용을 입력해 주세요.");
+//                return;
+//            }
+//
+//            console.log($("#mailReceiver").val());
+//            console.log($("#mailSubject").val());
+//            console.log(CKEDITOR.instances.editor.getData());
+//        }
 
 
     </script>

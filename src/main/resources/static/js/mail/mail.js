@@ -6,7 +6,15 @@ function onRefReceiver(){
 }
 
 function mailSend(){
-    alert("hi");
+    if(CKEDITOR.instances.editor.getData().length < 1){
+        alert("내용을 입력해 주세요.");
+        return;
+    }
+
+    console.log($("#mailReceiver").val());
+    console.log($("#mailSubject").val());
+    console.log(CKEDITOR.instances.editor.getData());
+
     // console.log($("#mailReceiver").val);
     // console.log($("#mailSubject").val());
     // console.log($("#editor").val());
