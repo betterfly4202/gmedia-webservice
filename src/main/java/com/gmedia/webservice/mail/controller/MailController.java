@@ -1,14 +1,15 @@
 package com.gmedia.webservice.mail.controller;
 
+import com.gmedia.webservice.common.MailSender;
 import com.gmedia.webservice.common.MailService;
 import com.gmedia.webservice.mail.dao.MainDao;
 import com.gmedia.webservice.mail.entity.MainEntity;
+import com.gmedia.webservice.mail.vo.MailVO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.MailSender;
-import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
 
 import java.util.List;
 
@@ -59,5 +60,20 @@ public class MailController {
             return "발송 실패";
         }
 
+    }
+
+    @Autowired
+    private MailSender mailSender;
+
+
+    @RequestMapping("/sender")
+    public @ResponseBody String mailSenderService(MailVO vo){
+        boolean isSend = mailSender.sendMail(vo);
+
+        if(isSend){
+            return "발송 성공";
+        }else{
+            return "발송 실패";
+        }
     }
 }

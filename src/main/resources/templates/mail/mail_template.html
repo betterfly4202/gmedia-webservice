@@ -125,12 +125,18 @@
             <div class="col-lg-12">
                 <h1 class="page-header">일일 업무 보고</h1>
 
+                <div class="form-group">
+                    <a class="btn btn-success" type="button" onclick="mailSend()">
+                        보내기
+                    </a>
+                </div>
+
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-lg-6">
 
                             <div class="form-group input-group">
-                                <input type="text" class="form-control" placeholder="수신자">
+                                <input type="text" class="form-control" placeholder="수신자" id="mailReceiver">
                                 <span class="input-group-btn">
                                     <a class="btn btn-default" type="button" onclick="onRefReceiver()">참조
                                     </a>
@@ -142,7 +148,7 @@
                             </div>
 
                             <div class="form-group">
-                                <input class="form-control" placeholder="제목">
+                                <input class="form-control" placeholder="제목" id="mailSubject">
                             </div>
 
                             <div class="form-group" style="margin-top: 10px;">
@@ -174,6 +180,16 @@
             width:640,
             height: 480
         });
+
+        function mailSend(){
+            var data = $('textarea.editor').val();
+
+//             console.log($("#mailReceiver").val());
+//             console.log($("#mailSubject").val());
+             console.log(data);
+        }
+
+
 
 
     </script>
