@@ -60,7 +60,8 @@ public class MailSender {
         try{
             MimeMessage message = new MimeMessage(this.mailAuthCheck());
             message.setFrom(new InternetAddress(user));
-            message.addRecipient(Message.RecipientType.TO, (Address) vo.getAddress());
+//            message.addRecipient(Message.RecipientType.TO, (Address) vo.getAddress());
+            message.addRecipient(Message.RecipientType.TO, vo.getReceiver());
 
             message.setSubject(vo.getSubject());
             message.setText(vo.getContents());

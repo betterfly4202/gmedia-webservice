@@ -12,20 +12,22 @@ import java.util.List;
 public class MailVO {
     private String subject;
     private String contents;
-    private String receiver;
+    private InternetAddress receiver;
 
     private List<InternetAddress> internetAddress;
     private List<Address> address;
+
+//    private List<Address> address;
 
     public List<Address> getAddress() {
         return address;
     }
 
-    public String getReceiver() {
+    public InternetAddress getReceiver() {
         return receiver;
     }
 
-    public void setReceiver(String receiver) {
+    public void setReceiver(InternetAddress receiver) {
         this.receiver = receiver;
     }
 

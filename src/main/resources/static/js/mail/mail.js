@@ -1,4 +1,4 @@
-
+"use strict";
 
 function onRefReceiver(){
     // if($("#ref-receiver").)

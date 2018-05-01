@@ -66,7 +66,7 @@ public class MailController {
     private MailSender mailSender;
 
 
-    @RequestMapping("/sender")
+    @PostMapping("/sender")
     public @ResponseBody String mailSenderService(MailVO vo){
         boolean isSend = mailSender.sendMail(vo);
 
