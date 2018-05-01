@@ -25,7 +25,7 @@ public class MailService {
     org.slf4j.Logger logger = LoggerFactory.getLogger(MailService.class);
 
     @Autowired
-    JavaMailSender javaMailSender;
+    JavaMailSender mailSender;
 
     @Value("${mail.smtp.mail}")
     String form;
@@ -40,13 +40,10 @@ public class MailService {
             }
         };
 
-        try
-        {
-            javaMailSender.send(preparator);
+        try{
+            mailSender.send(preparator);
             return true;
-        }
-        catch (MailException me)
-        {
+        }catch (MailException me){
             logger.error("MailException", me);
             return false;
         }

@@ -4,11 +4,14 @@ import com.gmedia.webservice.common.MailService;
 import com.gmedia.webservice.mail.dao.MainDao;
 import com.gmedia.webservice.mail.entity.MainEntity;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.MailSender;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
+
 
 /**
  * Created by betterFLY on 2018. 4. 21.
@@ -44,12 +47,17 @@ public class MailController {
     }
 
     @Autowired
-    MailService mailService;
+    private MailService mailService;
 
-    @GetMapping("/send/mail")
-    public boolean sendMail(){
-        boolean isSend = mailService.sendMail("dlcnddlf88@naver.com","제목", "내용이 거다");
+    @RequestMapping("/mail/service")
+    public String mailServiceMain(){
+        boolean isSend = mailService.sendMail("dlcnddlf88@naver.com","제목은","내용이다");
 
-        return isSend;
+        if(isSend){
+            return "발송 성공";
+        }else{
+            return "발송 실패";
+        }
+
     }
 }
