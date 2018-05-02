@@ -1,7 +1,6 @@
 package com.gmedia.webservice.mail.controller;
 
 import com.gmedia.webservice.common.MailSender;
-import com.gmedia.webservice.common.MailService;
 import com.gmedia.webservice.mail.dao.MainDao;
 import com.gmedia.webservice.mail.entity.MainEntity;
 import com.gmedia.webservice.mail.vo.MailVO;
@@ -48,22 +47,7 @@ public class MailController {
     }
 
     @Autowired
-    private MailService mailService;
-
-    @RequestMapping("/mail/service")
-    public String mailServiceMain(){
-        boolean isSend = mailService.sendMail("dlcnddlf88@naver.com","제목은","내용이다");
-
-        if(isSend){
-            return "발송 성공";
-        }else{
-            return "발송 실패";
-        }
-
-    }
-
-    @Autowired
-    private MailSender mailSender;
+    MailSender mailSender;
 
 
     @PostMapping("/sender")

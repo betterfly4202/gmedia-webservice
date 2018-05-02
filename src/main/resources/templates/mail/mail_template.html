@@ -173,7 +173,8 @@
     <script src="/sbadmin/vendor/metisMenu/metisMenu.min.js"></script>
     <script src="/sbadmin/dist/js/sb-admin-2.js"></script>
     <script src="/ckeditor/ckeditor.js"></script>
-    <script src="/js/mail/mail.js"></script>
+    <script src="/static/js/mail/mail.js"></script>
+    <script src="/static/js/utils/common.js"></script>
 
     <script>
 
@@ -185,27 +186,6 @@
         })
 
 
-//        function mailSend(){
-////            var data = $('textarea.editor').val();
-//
-//            if(CKEDITOR.instances.editor.getData().length < 1){
-//                alert("내용을 입력해 주세요.");
-//                return;
-//            }
-//
-//             $.ajax({
-//                 type : 'post',
-//                 url : 'http://localhost:8080/sender',
-//                 data : {
-//                     receiver : $("#mailReceiver").val(),
-//                     subject : $("#mailSubject").val(),
-//                     contents : CKEDITOR.instances.editor.getData()
-//                 },
-//                 success : function (data) {
-//                     console.log(data);
-//                 }
-//             });
-//        }
 
     </script>
 </body>

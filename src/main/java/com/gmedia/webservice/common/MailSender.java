@@ -2,6 +2,7 @@ package com.gmedia.webservice.common;
 
 import com.gmedia.webservice.mail.vo.MailVO;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
@@ -16,6 +17,7 @@ import java.util.Properties;
  * Github : http://github.com/betterfly88
  */
 
+@ComponentScan
 @Configuration
 @PropertySource(value="classpath:properties/connection.properties")
 public class MailSender {
@@ -56,28 +58,23 @@ public class MailSender {
     }
 
     public boolean sendMail(MailVO vo){
-        boolean flag = false;
         try{
             MimeMessage message = new MimeMessage(this.mailAuthCheck());
             message.setFrom(new InternetAddress(user));
-//            message.addRecipient(Message.RecipientType.TO, (Address) vo.getAddress());
-            message.addRecipient(Message.RecipientType.TO, vo.getReceiver());
-
+            message.addRecipient(Message.RecipientType.TO, (Address) vo.getInternetAddress());
+//            message.addRecipient(Message.RecipientType.TO, vo.getReceiver());
             message.setSubject(vo.getSubject());
             message.setText(vo.getContents());
 
             Transport.send(message);
 
-            flag = true;
-
-            return flag;
-
+            return true;
         }catch (AddressException e){
             e.printStackTrace();
-            return flag;
+            return false;
         }catch (MessagingException e) {
             e.printStackTrace();
-            return flag;
+            return false;
         }
 
     }
