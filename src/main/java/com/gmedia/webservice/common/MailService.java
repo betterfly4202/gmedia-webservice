@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.stereotype.Service;
 
 import javax.mail.*;
 import javax.mail.internet.AddressException;
@@ -17,10 +18,10 @@ import java.util.Properties;
  * Github : http://github.com/betterfly88
  */
 
-@ComponentScan
+@Service
 @Configuration
 @PropertySource(value="classpath:properties/connection.properties")
-public class MailSender {
+public class MailService {
     @Value("${mail.smtp.host}")
     String host;
 

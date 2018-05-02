@@ -1,6 +1,6 @@
 package com.gmedia.webservice.mail.controller;
 
-import com.gmedia.webservice.common.MailSender;
+import com.gmedia.webservice.common.MailService;
 import com.gmedia.webservice.mail.dao.MainDao;
 import com.gmedia.webservice.mail.entity.MainEntity;
 import com.gmedia.webservice.mail.vo.MailVO;
@@ -18,12 +18,14 @@ import java.util.List;
  * Github : http://github.com/betterfly88
  */
 
-@RestController
 @Controller
 public class MailController {
 
     @Autowired
     private MainDao dao;
+
+    @Autowired
+    private MailService mailService;
 
     @GetMapping("/mail")
     public ModelAndView mailTemplate(){
@@ -46,13 +48,12 @@ public class MailController {
         return list;
     }
 
-    @Autowired
-    MailSender mailSender;
+
 
 
     @PostMapping("/sender")
     public @ResponseBody String mailSenderService(MailVO vo){
-        boolean isSend = mailSender.sendMail(vo);
+        boolean isSend = mailService.sendMail(vo);
 
         if(isSend){
             return "발송 성공";
