@@ -2,7 +2,6 @@ package com.gmedia.webservice.common;
 
 import com.gmedia.webservice.mail.vo.MailVO;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
@@ -11,6 +10,8 @@ import javax.mail.*;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 /**
@@ -58,12 +59,24 @@ public class MailService {
         return properties;
     }
 
+    private Address[] receiverAddressList(List<String> arr) throws AddressException {
+        InternetAddress [] receiverList = null;
+
+        receiverList = new InternetAddress[arr.size()];
+
+        for(int i=0; i<arr.size(); i++){
+            receiverList[i] = new InternetAddress(arr.get(i));
+        }
+
+        return receiverList;
+    }
+
     public boolean sendMail(MailVO vo){
         try{
             MimeMessage message = new MimeMessage(this.mailAuthCheck());
             message.setFrom(new InternetAddress(user));
-            message.addRecipient(Message.RecipientType.TO, (Address) vo.getInternetAddress());
-//            message.addRecipient(Message.RecipientType.TO, vo.getReceiver());
+//            message.addRecipient(Message.RecipientType.TO, receiverList);
+            message.setRecipients(Message.RecipientType.TO, receiverAddressList(vo.getInternetAddress()));
             message.setSubject(vo.getSubject());
             message.setText(vo.getContents());
 

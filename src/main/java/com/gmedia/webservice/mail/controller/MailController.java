@@ -48,9 +48,6 @@ public class MailController {
         return list;
     }
 
-
-
-
     @PostMapping("/sender")
     public @ResponseBody String mailSenderService(MailVO vo){
         boolean isSend = mailService.sendMail(vo);

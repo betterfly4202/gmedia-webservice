@@ -14,10 +14,8 @@ public class MailVO {
     private String contents;
     private InternetAddress receiver;
 
-    private List<InternetAddress> internetAddress;
+    private List<String> internetAddress;
     private List<Address> address;
-
-//    private List<Address> address;
 
     public List<Address> getAddress() {
         return address;
@@ -51,11 +49,11 @@ public class MailVO {
         this.contents = contents;
     }
 
-    public List<InternetAddress> getInternetAddress() {
+    public List<String> getInternetAddress() {
         return internetAddress;
     }
 
-    public void setInternetAddress(List<InternetAddress> internetAddress) {
+    public void setInternetAddress(List<String> internetAddress) {
         this.internetAddress = internetAddress;
     }
 }

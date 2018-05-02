@@ -15,16 +15,38 @@ function checkMailContents(){
 function mailSend(){
     checkMailContents();
 
-    $.ajax({
-        type : 'post',
-        url : 'http://localhost:8080/sender',
-        data : {
-            internetAddress : mailAddressSpliter($("#mailReceiver").val()),
-            subject : $("#mailSubject").val(),
-            contents : CKEDITOR.instances.editor.getData()
-        },
-        success : function (data) {
-            console.log(data);
-        }
+    // console.log($("#mailReceiver").val());
+    // console.log(mailAddressSpliter($("#mailReceiver").val()));
+    mailAddressSpliter($("#mailReceiver").val());
+    // $.ajax({
+    //     type : 'post',
+    //     url : 'http://localhost:8080/sender',
+    //     data : {
+    //         internetAddress : mailAddressSpliter($("#mailReceiver").val()),
+    //         subject : $("#mailSubject").val(),
+    //         contents : CKEDITOR.instances.editor.getData()
+    //     },
+    //     success : function (data) {
+    //         console.log(data);
+    //     }
+    // });
+}
+
+
+function mailAddressSpliter(address){
+    var arr = address.split(";");
+
+    arr.forEach(function(item,index){
+        // if(item == ''){
+        //     arr.pop(index);
+        // }
+        alert(item + "/// "+index);
+
+        // item.trim();
+        // item.replace("\"",'');
+        // console.log('item',item);
     });
+
+    console.log('arr', arr);
+    return arr;
 }
