@@ -33,6 +33,16 @@ function mailSend(){
 }
 
 
+/*
+    TODO
+    1. 주소값 받은 다음 trim, "" 정규표현식으로 주소에 알맞는 값만 가져다가 ("" << 이거 Numberformat Excception 발생함)
+    서버쪽 리스트에 담아주기 >> 그 다음에는 주소 배열로 생성해서 발송 됨
+
+    2. 파일 전송 추가하기
+
+ */
+
+
 function mailAddressSpliter(address){
     var arr = address.split(";");
 
