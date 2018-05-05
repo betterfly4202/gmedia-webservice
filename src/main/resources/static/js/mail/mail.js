@@ -1,7 +1,6 @@
 "use strict";
 
 function onRefReceiver(){
-    // if($("#ref-receiver").)
     $("#ref-receiver").show();
 }
 
@@ -15,8 +14,6 @@ function checkMailContents(){
 function mailSend(){
     checkMailContents();
 
-    // console.log($("#mailReceiver").val());
-    // console.log(mailAddressSpliter($("#mailReceiver").val()));
     mailAddressSpliter($("#mailReceiver").val());
     // $.ajax({
     //     type : 'post',
