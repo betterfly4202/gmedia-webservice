@@ -58,4 +58,5 @@ public class MailController {
             return "발송 실패";
         }
     }
+
 }
