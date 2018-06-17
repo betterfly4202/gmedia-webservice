@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import javax.servlet.http.Cookie;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -20,7 +21,5 @@ public class CookieTest {
         map.put("value","1231aadfddd");
 
         Cookie cookies = new Cookie("loginInfo","zzz");
-        List<Map<String, Object>> list =
-                mapper.readValue(body, new TypeReference<List<Map<String, Object>>>(){});
     }
 }
