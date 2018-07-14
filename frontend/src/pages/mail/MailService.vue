@@ -2,7 +2,7 @@
 
   <div class="row">
     <div class="col-lg-12">
-      <h1 class="page-header">일일 업무 보고</h1>
+      <h1 class="page-header">일일 업무 보고_vue</h1>
 
       <div class="form-group">
         <a class="btn btn-success" type="button" onclick="mailSend()">
