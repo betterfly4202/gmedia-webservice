@@ -27,7 +27,7 @@ public class MailController {
     @Autowired
     private MailService mailService;
 
-    @GetMapping("/mail")
+    @GetMapping("/view")
     public ModelAndView mailTemplate(){
         ModelAndView mav = new ModelAndView("mail/mail_template");
 
@@ -48,8 +48,9 @@ public class MailController {
         return list;
     }
 
+    @CrossOrigin
     @PostMapping("/sender")
-    public @ResponseBody String mailSenderService(MailVO vo){
+    public String mailSenderService(@RequestBody MailVO vo){
         boolean isSend = mailService.sendMail(vo);
 
         if(isSend){
